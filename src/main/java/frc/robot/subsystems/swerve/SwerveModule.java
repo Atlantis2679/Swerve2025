@@ -1,7 +1,14 @@
 package frc.robot.subsystems.swerve;
 
+<<<<<<< Updated upstream
 import static frc.robot.subsystems.swerve.SwerveConstants.Modules.*;
+=======
+import static edu.wpi.first.units.Units.Radians;
+import static edu.wpi.first.units.Units.Rotations;
+import static frc.robot.subsystems.swerve.SwerveConstants.*;
+>>>>>>> Stashed changes
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
@@ -63,8 +70,13 @@ public class SwerveModule implements Tunable {
             io.setDriveVoltage((targetState.speedMetersPerSecond / MAX_SPEED_MPS) * MAX_VOLTAGE);
         else
             io.setDrivePercentageSpeed(targetState.speedMetersPerSecond / MAX_SPEED_MPS);
+<<<<<<< Updated upstream
 
         io.setTurnAngleRotations(targetState.angle.getRotations());
+=======
+        
+        io.setTurnAbsoluteAngleRotations(Rotations.convertFrom(MathUtil.angleModulus(targetState.angle.getRadians()), Radians));
+>>>>>>> Stashed changes
     }
 
     public double getDegreesCW() {

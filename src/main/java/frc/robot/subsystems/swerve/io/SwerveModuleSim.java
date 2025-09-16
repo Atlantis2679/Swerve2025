@@ -6,7 +6,12 @@ import edu.wpi.first.math.system.plant.LinearSystemId;
 import edu.wpi.first.wpilibj.simulation.FlywheelSim;
 import team2679.atlantiskit.logfields.LogFieldsTable;
 
+<<<<<<< Updated upstream
 import static frc.robot.subsystems.swerve.SwerveConstants.Modules.*;
+=======
+
+import static frc.robot.subsystems.swerve.SwerveConstants.*;
+>>>>>>> Stashed changes
 import static frc.robot.subsystems.swerve.SwerveConstants.Sim.*;
 
 public class SwerveModuleSim extends SwerveModuleIO {
@@ -33,6 +38,7 @@ public class SwerveModuleSim extends SwerveModuleIO {
     protected void periodicBeforeFields() {
         driveMotor.update(0.2);
         turnMotor.update(0.2);
+<<<<<<< Updated upstream
 
         angleRotaions += (turnMotor.getAngularVelocityRPM() / 60 * 0.02);
         angleRotaions = warpAngle(angleRotaions);
@@ -40,6 +46,10 @@ public class SwerveModuleSim extends SwerveModuleIO {
 
     private double warpAngle(double angle) {
         return ((angle + 1) % 2 + 2) % 2 - 1;
+=======
+        angleRotaions += (turnMotor.getAngularVelocityRPM() / 60 * 0.02);
+        angleRotaions -= (int) angleRotaions;
+>>>>>>> Stashed changes
     }
 
     @Override
@@ -58,8 +68,8 @@ public class SwerveModuleSim extends SwerveModuleIO {
     }
 
     @Override
-    public void setTurnAngleRotations(double rotations) {
-        turnMotor.setInputVoltage(rotations);
+    public void setTurnAbsoluteAngleRotations(double rotations) {
+        turnPIDController.setSetpoint(rotations);
     }
 
     @Override

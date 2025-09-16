@@ -1,19 +1,26 @@
 package frc.robot.subsystems.swerve;
 
+<<<<<<< Updated upstream
 import edu.wpi.first.math.filter.Debouncer;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Twist2d;
+=======
+import edu.wpi.first.math.geometry.Rotation2d;
+>>>>>>> Stashed changes
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
+<<<<<<< Updated upstream
 import frc.robot.RobotMap.Module0;
 import frc.robot.RobotMap.Module1;
 import frc.robot.RobotMap.Module2;
 import frc.robot.RobotMap.Module3;
 import frc.robot.subsystems.swerve.SwerveConstants.Modules;
+=======
+>>>>>>> Stashed changes
 import frc.robot.subsystems.swerve.io.GyroIO;
 import frc.robot.subsystems.swerve.io.GyroIONavX;
 import frc.robot.subsystems.swerve.io.GyroIOSim;
@@ -21,9 +28,13 @@ import team2679.atlantiskit.helpers.RotationalSensorHelper;
 import team2679.atlantiskit.logfields.LogFieldsTable;
 import team2679.atlantiskit.periodicalerts.PeriodicAlertsGroup;
 
+import static frc.robot.RobotMap.*;
 import static frc.robot.subsystems.swerve.SwerveConstants.*;
+<<<<<<< Updated upstream
 
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
+=======
+>>>>>>> Stashed changes
 
 public class Swerve extends SubsystemBase {
   private LogFieldsTable fieldsTable = new LogFieldsTable(getName());
@@ -80,6 +91,7 @@ public class Swerve extends SubsystemBase {
     SmartDashboard.putBoolean("isRedAlliance", isRedAlliance());
   }
 
+<<<<<<< Updated upstream
   public void drive(double vxSpeedMPS, double vySpeedMPS, double vAngleRandiansPS, boolean isFieldRelative,
       boolean useVoltage) {
     ChassisSpeeds targetChassisSpeeds = isFieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(
@@ -93,12 +105,20 @@ public class Swerve extends SubsystemBase {
 
   public void stop() {
     drive(0, 0, 0, false, true);
+=======
+  public void drive(double vxSpeedMPS, double vySpeedMPS, double vAngleRandiansPS, boolean isFieldRelative, boolean useVoltage) {
+    ChassisSpeeds targetChassisSpeeds = isFieldRelative ? 
+      ChassisSpeeds.fromFieldRelativeSpeeds(vxSpeedMPS, vySpeedMPS, vAngleRandiansPS, getYawRotation2dCCW()) : 
+      ChassisSpeeds.fromRobotRelativeSpeeds(vxSpeedMPS, vySpeedMPS, vAngleRandiansPS, getYawRotation2dCCW());
+    driveChassisSpeed(targetChassisSpeeds, useVoltage);
+>>>>>>> Stashed changes
   }
 
   public double getYawDegreesCW() {
     return yawDegreesCW.getAngle();
   }
 
+<<<<<<< Updated upstream
   public boolean isRedAlliance() {
     return isRedAlliance.get().booleanValue();
   }
@@ -108,6 +128,13 @@ public class Swerve extends SubsystemBase {
   }
 
   public void driveChassisSpeeds(ChassisSpeeds speeds, boolean useVoltage) {
+=======
+  public Rotation2d getYawRotation2dCCW() {
+    return Rotation2d.fromDegrees(-getYawDegreesCW());
+  }
+
+  public void driveChassisSpeed(ChassisSpeeds speeds, boolean useVoltage) {
+>>>>>>> Stashed changes
     SwerveModuleState[] swerveModuleStates = kinematics.toSwerveModuleStates(speeds);
 
     SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, Modules.MAX_SPEED_MPS);

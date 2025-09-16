@@ -88,7 +88,7 @@ public class SwerveModuleIOFalcon extends SwerveModuleIO {
     }
 
     @Override
-    public void setTurnAngleRotations(double rotations) {
+    public void setTurnAbsoluteAngleRotations(double rotations) {
         turnMotor.setControl(turnVoltageControl.withPosition(rotations));
     }
 

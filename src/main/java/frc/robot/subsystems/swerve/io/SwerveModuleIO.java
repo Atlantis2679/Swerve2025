@@ -23,7 +23,11 @@ public abstract class SwerveModuleIO extends IOBase {
 
     public abstract void setDrivePercentageSpeed(double speed);
 
+<<<<<<< Updated upstream
     public abstract void setTurnAngleRotations(double voltage);
 
     public abstract void setCoast();
+=======
+    public abstract void setTurnAbsoluteAngleRotations(double voltage);
+>>>>>>> Stashed changes
 }
