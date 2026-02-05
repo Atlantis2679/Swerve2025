@@ -87,6 +87,7 @@ public class Swerve extends SubsystemBase implements Tunable {
     Optional<Rotation2d> gyroAngle = isGyroConnected() ? Optional.of(Rotation2d.fromDegrees(getGyroYawDegreesCCW())) : Optional.empty();
     poseEstimator.update(getModulePositions(), gyroAngle);
 
+    fieldsTable.recordOutput("Is moving", isMoving());
     fieldsTable.recordOutput("Is gryo connected", isGyroConnected());
     fieldsTable.recordOutput("Yaw degrees CCW", getGyroYawDegreesCCW());
     fieldsTable.recordOutput("Current Command", getCurrentCommand() != null ? getCurrentCommand().getName() : "none");
@@ -131,6 +132,9 @@ public class Swerve extends SubsystemBase implements Tunable {
 
   public boolean isGyroConnected() {
     return isGyroConnectedDebouncer.calculate(gyroIO.isConnected.getAsBoolean());
+  }
+  public boolean isMoving() {
+    return isGyroConnectedDebouncer.calculate(gyroIO.isMoving.getAsBoolean());
   }
 
   public void driveChassisSpeeds(ChassisSpeeds speeds, boolean useVoltage) {

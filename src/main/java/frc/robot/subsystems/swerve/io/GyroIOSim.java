@@ -16,4 +16,8 @@ public class GyroIOSim extends GyroIO {
     protected boolean getIsConnected() {
         return false;
     }
+    @Override
+    protected boolean getIsMoving() {
+        return true;
+    }
 }

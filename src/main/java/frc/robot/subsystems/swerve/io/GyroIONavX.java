@@ -5,7 +5,7 @@ import com.studica.frc.AHRS;
 import team2679.atlantiskit.logfields.LogFieldsTable;
 
 public class GyroIONavX extends GyroIO {
-  private final AHRS navX = new AHRS(AHRS.NavXComType.kMXP_SPI);
+  private final AHRS navX = new AHRS(AHRS.NavXComType.kUSB1);
 
   public GyroIONavX(LogFieldsTable fieldsTable) {
     super(fieldsTable);
@@ -19,5 +19,10 @@ public class GyroIONavX extends GyroIO {
   @Override
   protected boolean getIsConnected() {
     return navX.isConnected();
+  }
+
+  @Override
+  protected boolean getIsMoving(){
+    return navX.isMoving();
   }
 }
